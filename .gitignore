@@ -1,0 +1,12 @@
+.env
+.env.local
+__pycache__/
+.pytest_cache/
+.venv/
+.venv-civicos/
+node_modules/
+.next/
+coverage/
+*.db
+uploads/
+
