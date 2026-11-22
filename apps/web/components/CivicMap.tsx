@@ -3,11 +3,13 @@
 import { useEffect, useRef } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { usePreferences } from "@/components/PreferencesProvider";
 
 type Point = { public_id: string; category: string; status: string; priority: string; latitude: number; longitude: number };
 
 export function CivicMap({ points }: { points: Point[] }) {
   const node = useRef<HTMLDivElement>(null);
+  const { labelFor, theme } = usePreferences();
   useEffect(() => {
     if (!node.current) return;
     const center: [number, number] = points.length
@@ -25,14 +27,14 @@ export function CivicMap({ points }: { points: Point[] }) {
     points.forEach((point) => {
       const marker = document.createElement("button");
       marker.className = `map-marker priority-${point.priority}`;
-      marker.setAttribute("aria-label", `${point.category} — ${point.priority} priority`);
+      marker.setAttribute("aria-label", `${labelFor(point.category)} — ${labelFor(point.priority)}`);
       new maplibregl.Marker({ element: marker })
         .setLngLat([point.longitude, point.latitude])
         .setPopup(new maplibregl.Popup({ offset: 16 }).setHTML(`<strong>${point.category.replaceAll("_", " ")}</strong><br/>${point.public_id}<br/>${point.status.replaceAll("_", " ")}`))
         .addTo(map);
     });
     return () => map.remove();
-  }, [points]);
+  }, [points, labelFor, theme]);
   return <div className="civic-map" ref={node} aria-label="Privacy-safe incident map" />;
 }
 

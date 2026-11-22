@@ -58,5 +58,9 @@ Image quality analysis is always available. Object detection runs only when `CIV
 
 ## UI design system
 
-The interface uses deep navy for institutional trust, teal for civic action and confirmation, restrained amber for attention, and neutral off-white surfaces. Manrope carries high-information headings and Inter carries body text. Components meet visible focus requirements, support reduced motion, and use responsive layouts at 900 px and 600 px breakpoints. A production accessibility pass should validate WCAG 2.2 AA with axe and manual keyboard/screen-reader testing.
+The interface uses deep navy for institutional trust, teal for civic action and confirmation, restrained amber for attention, and layered neutral surfaces. Semantic design tokens define independently tuned light and dark palettes; the first visit follows the system preference and later choices persist locally without a theme flash.
+
+A client preference layer localizes the primary interface in English, Hindi, and Telugu, formats civic taxonomy labels, and coordinates browser speech synthesis. Citizen descriptions support browser-native speech recognition with typed input as the permanent fallback. No voice transcript is submitted until the citizen can review and edit it.
+
+Components provide visible focus, large touch targets, semantic live regions, a skip link, reduced-motion behavior, and responsive layouts at 1040 px, 900 px, and 650 px breakpoints. The production build uses a system font stack so container builds do not depend on a remote font service. A production accessibility pass should still validate WCAG 2.2 AA with axe plus manual keyboard and screen-reader testing.
 

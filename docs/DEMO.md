@@ -26,7 +26,8 @@ On an empty database the API creates three records whose summaries begin with `[
 ## Current limitations
 
 - No specialized weights ship in the repository, so object detection correctly falls back to image-quality checks and human review.
-- Voice transcription, text-to-speech, notification providers, Celery workers, before/after alignment, and municipal ticket integrations are extension points rather than completed primary-path features.
+- Browser-native voice transcription and text-to-speech are implemented, but availability and language quality vary by browser, operating system, and installed speech services.
+- Notification providers, Celery workers, before/after alignment, and municipal ticket integrations remain extension points rather than completed primary-path features.
 - The MVP duplicate matcher is lexical and distance-based; it needs multilingual embeddings and image similarity for production recall.
 - Jurisdiction routing uses category capabilities and explains that boundary confirmation is pending.
 - Local file storage is for demonstration only. Production requires private object storage, retention rules, and evidence access logs.
@@ -37,7 +38,7 @@ On an empty database the API creates three records whose summaries begin with `[
 1. Add official ward polygons, PostGIS `ST_DWithin`, boundary-aware routing, and department directories.
 2. Train/evaluate category-specific vision models with diverse Indian road and monsoon conditions; publish per-class validation metrics.
 3. Add OpenAI structured extraction with prompt-injection isolation, source text grounding, and officer correction capture.
-4. Implement voice input, offline queueing, client image compression, SMS tracking, and full Telugu/Hindi interface localization.
+4. Add offline queueing, client image compression, SMS tracking, and optional server transcription for browsers without native speech recognition.
 5. Add merge/unmerge tooling, before/after review, citizen feedback, reopen workflow, SLA escalation, and event-driven notifications.
 6. Add calibrated hotspot forecasting only after sufficient historical data, provenance, drift monitoring, and fairness review.
 7. Complete security threat modeling, DPIA, retention enforcement, penetration testing, and WCAG 2.2 AA audit.
